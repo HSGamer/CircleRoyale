@@ -18,12 +18,15 @@ public abstract class Fighter {
     }
 
     public void damage() {
-        health--;
-        if (health < 0) health = 0;
+        damage(1);
     }
 
     public int getHealth() {
         return health;
+    }
+
+    public String displayHealth() {
+        return health + " " + "♥".repeat(Math.max(0, health));
     }
 
     public boolean isAlive() {

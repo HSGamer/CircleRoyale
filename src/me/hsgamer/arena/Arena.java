@@ -24,9 +24,7 @@ public class Arena {
                 if (!fighter.isAlive()) continue;
                 System.out.println("============================================");
                 System.out.println(fighter.getName() + " is fighting");
-                System.out.print("Current health: " + fighter.getHealth() + " ");
-                for (int i = 0; i < fighter.getHealth(); ++i) System.out.print("♥");
-                System.out.println();
+                System.out.println("Current health: " + fighter.displayHealth());
                 List<Fighter> enemies = getEnemies(fighter);
                 Fighter theChosenOne = fighter.choose(enemies);
 
@@ -50,9 +48,8 @@ public class Arena {
                         theChosenOne.damage(damage);
                     }
                 }
-                System.out.print(theChosenOne.getName() + " took " + damage + " damage. Current Health: " + theChosenOne.getHealth() + " ");
-                for (int i = 0; i < theChosenOne.getHealth(); ++i) System.out.print("♥");
-                System.out.println();
+                System.out.println(theChosenOne.getName() + " took " + damage + " damage");
+                System.out.println("Current health: " + theChosenOne.displayHealth());
                 System.out.println("============================================");
             }
         }
