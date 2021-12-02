@@ -14,10 +14,12 @@ public abstract class Fighter {
 
     public void damage(int damage) {
         health -= damage;
+        if (health < 0) health = 0;
     }
 
     public void damage() {
         health--;
+        if (health < 0) health = 0;
     }
 
     public int getHealth() {
@@ -26,6 +28,10 @@ public abstract class Fighter {
 
     public boolean isAlive() {
         return health > 0;
+    }
+
+    public boolean isDead() {
+        return health == 0;
     }
 
     public String getName() {

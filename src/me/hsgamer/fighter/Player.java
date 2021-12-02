@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class Player extends Fighter {
     private final Scanner scanner;
 
-    public Player(String name) {
+    public Player(String name, Scanner scanner) {
         super(name);
-        this.scanner = new Scanner(System.in);
+        this.scanner = scanner;
     }
 
     @Override
@@ -18,7 +18,9 @@ public class Player extends Fighter {
         System.out.println("Enemies: ");
         for (int i = 0; i < enemies.size(); i++) {
             Fighter enemy = enemies.get(i);
-            System.out.println(i + ": " + enemy.getName() + " - " + " Health: " + enemy.getHealth());
+            System.out.println(i + ": " + enemy.getName() + " - " + " Health: " + enemy.getHealth() + " ");
+            for (int j = 0; j < enemy.getHealth(); ++j) System.out.print("♥");
+            System.out.println();
         }
         int choose = InputUtil.getInputInteger(scanner, "Choose an enemy: ", 0, enemies.size() - 1);
         return enemies.get(choose);

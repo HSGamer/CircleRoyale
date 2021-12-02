@@ -6,7 +6,6 @@ import me.hsgamer.fighter.Fighter;
 import me.hsgamer.fighter.Player;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +18,7 @@ public class Main {
         List<Fighter> fighters = new ArrayList<>();
         for (int i = 0; i < players; i++) {
             String name = InputUtil.getInputString(scanner, "Player " + (i + 1) + " name: ");
-            fighters.add(new Player(name));
+            fighters.add(new Player(name, scanner));
         }
         for (int i = 0; i < bots; i++) {
             String name = InputUtil.getInputString(scanner, "Bot " + (i + 1) + " name: ");

@@ -16,19 +16,43 @@ public class Arena {
     }
 
     public void fight() {
+        int round = 0;
         while (!isEnded()) {
+            System.out.println("Round #" + ++round);
             Collections.shuffle(fighters);
             for (Fighter fighter : fighters) {
                 if (!fighter.isAlive()) continue;
                 System.out.println("============================================");
                 System.out.println(fighter.getName() + " is fighting");
-
+                System.out.print("Current health: " + fighter.getHealth() + " ");
+                for (int i = 0; i < fighter.getHealth(); ++i) System.out.print("♥");
+                System.out.println();
                 List<Fighter> enemies = getEnemies(fighter);
-                Fighter enemy = fighter.choose(enemies);
+                Fighter theChosenOne = fighter.choose(enemies);
 
-                System.out.println(fighter.getName() + " chose " + enemy.getName() + " as an enemy to attack");
-                enemy.damage(random.nextInt(3) + 1);
-                System.out.println(enemy.getName() + " took damage. Current Health: " + enemy.getHealth());
+                System.out.println(fighter.getName() + " chose " + theChosenOne.getName() + " as an enemy to attack");
+                int damage = 3;
+                if (random.nextDouble() <= 0.1) {
+                    System.out.println("CRITICAL");
+                    theChosenOne.damage(damage);
+                } else {
+                    damage = random.nextInt(2) + 1;
+                    if (random.nextDouble() <= 0.4) {
+                        if (random.nextDouble() <= 0.4) {
+                            damage = 0;
+                            System.out.println("MISS");
+                        } else {
+                            System.out.println("BLOCKED");
+                            theChosenOne.damage(damage /= 2);
+                        }
+                    } else {
+                        System.out.println("HIT");
+                        theChosenOne.damage(damage);
+                    }
+                }
+                System.out.print(theChosenOne.getName() + " took " + damage + " damage. Current Health: " + theChosenOne.getHealth() + " ");
+                for (int i = 0; i < theChosenOne.getHealth(); ++i) System.out.print("♥");
+                System.out.println();
                 System.out.println("============================================");
             }
         }
