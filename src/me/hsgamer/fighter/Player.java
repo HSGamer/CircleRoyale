@@ -18,7 +18,7 @@ public class Player extends Fighter {
         System.out.println("Enemies: ");
         for (int i = 0; i < enemies.size(); i++) {
             Fighter enemy = enemies.get(i);
-            System.out.println(i + ": " + enemy.getName() + " - " + displayHealth());
+            System.out.println(i + ": " + enemy.getName() + " - " + enemy.displayHealth());
         }
         int choose = InputUtil.getInputInteger(scanner, "Choose an enemy: ", 0, enemies.size() - 1);
         return enemies.get(choose);
