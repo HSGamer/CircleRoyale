@@ -4,6 +4,7 @@ import me.hsgamer.arena.Arena;
 import me.hsgamer.fighter.Bot;
 import me.hsgamer.fighter.Fighter;
 import me.hsgamer.fighter.Player;
+import me.hsgamer.utils.InputUtil;
 
 import java.util.ArrayList;
 import java.util.List;

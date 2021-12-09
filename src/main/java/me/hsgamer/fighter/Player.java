@@ -1,9 +1,9 @@
 package me.hsgamer.fighter;
 
-import me.hsgamer.InputUtil;
 import me.hsgamer.action.Action;
 import me.hsgamer.action.Fight;
 import me.hsgamer.action.HealPool;
+import me.hsgamer.utils.InputUtil;
 
 import java.util.List;
 import java.util.Scanner;

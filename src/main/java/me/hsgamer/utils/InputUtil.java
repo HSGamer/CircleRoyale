@@ -1,8 +1,12 @@
-package me.hsgamer;
+package me.hsgamer.utils;
 
 import java.util.Scanner;
 
 public class InputUtil {
+    private InputUtil() {
+        // EMPTY
+    }
+
     public static int getInputInteger(Scanner scanner, String message) {
         Integer input = null;
         while (input == null) {

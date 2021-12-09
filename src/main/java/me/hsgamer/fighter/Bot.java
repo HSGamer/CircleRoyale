@@ -3,6 +3,7 @@ package me.hsgamer.fighter;
 import me.hsgamer.action.Action;
 import me.hsgamer.action.Fight;
 import me.hsgamer.action.HealPool;
+import me.hsgamer.utils.ThreadUtil;
 
 import java.util.List;
 import java.util.Random;
@@ -17,17 +18,11 @@ public class Bot extends Fighter {
 
     @Override
     public Action doAction(List<Fighter> fighters) {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            e.printStackTrace();
-        }
+        ThreadUtil.delay(3000);
 
         if (healPool.isAvailable() && getHealth() < 5 && Math.random() < 0.5) {
             return healPool;
         }
-
         List<Fighter> enemies = getEnemies(fighters);
         int choose = random.nextInt(enemies.size());
         return new Fight(this, enemies.get(choose));

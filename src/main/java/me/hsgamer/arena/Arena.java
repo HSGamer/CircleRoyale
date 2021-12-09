@@ -2,6 +2,7 @@ package me.hsgamer.arena;
 
 import me.hsgamer.action.Action;
 import me.hsgamer.fighter.Fighter;
+import me.hsgamer.utils.ThreadUtil;
 
 import java.util.*;
 
@@ -17,6 +18,10 @@ public class Arena {
         int round = 0;
         while (!isEnded()) {
             System.out.println("Round #" + ++round);
+            for (Fighter fighter : fighters) {
+                System.out.println(fighter.getName() + ": " + (fighter.isAlive() ? fighter.displayHealth() : "dead"));
+            }
+            ThreadUtil.delay(2000);
             Collections.shuffle(fighters);
             for (Fighter fighter : fighters) {
                 if (!fighter.isAlive()) continue;
@@ -28,6 +33,7 @@ public class Arena {
                 action.execute();
                 broadcastDead();
                 System.out.println("============================================");
+                ThreadUtil.delay(500);
             }
         }
     }
