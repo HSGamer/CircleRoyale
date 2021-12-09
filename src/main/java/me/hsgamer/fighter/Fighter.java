@@ -1,5 +1,8 @@
 package me.hsgamer.fighter;
 
+import me.hsgamer.action.Action;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Fighter {
@@ -10,7 +13,13 @@ public abstract class Fighter {
         this.name = name;
     }
 
-    public abstract Fighter choose(List<Fighter> enemies);
+    public abstract Action doAction(List<Fighter> fighters);
+
+    protected final List<Fighter> getEnemies(List<Fighter> fighters) {
+        List<Fighter> enemies = new ArrayList<>(fighters);
+        enemies.remove(this);
+        return enemies;
+    }
 
     public void damage(int damage) {
         health -= damage;

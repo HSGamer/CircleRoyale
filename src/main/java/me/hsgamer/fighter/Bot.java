@@ -1,5 +1,8 @@
 package me.hsgamer.fighter;
 
+import me.hsgamer.action.Action;
+import me.hsgamer.action.Fight;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -9,7 +12,7 @@ public class Bot extends Fighter {
     }
 
     @Override
-    public Fighter choose(List<Fighter> enemies) {
+    public Action doAction(List<Fighter> fighters) {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -17,11 +20,14 @@ public class Bot extends Fighter {
             e.printStackTrace();
         }
 
+        Fighter choose;
         if (Math.random() < 0.8) {
-            return getWeakest(enemies);
+            choose = getWeakest(getEnemies(fighters));
         } else {
-            return getStrongest(enemies);
+            choose = getStrongest(getEnemies(fighters));
         }
+
+        return new Fight(this, choose);
     }
 
     private Fighter getWeakest(List<Fighter> enemies) {
