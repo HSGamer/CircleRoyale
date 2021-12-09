@@ -13,6 +13,7 @@ public class HealPool extends Heal {
     public void execute() {
         hpBottles--;
         super.execute();
+        System.out.println(getFighter().getName() + " has " + hpBottles + " hp bottles left");
     }
 
     public int getHpBottles() {

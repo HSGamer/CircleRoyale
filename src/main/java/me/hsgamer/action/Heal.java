@@ -14,4 +14,8 @@ public class Heal implements Action {
         fighter.heal(2);
         System.out.println(fighter.getName() + " heal 2 hearts");
     }
+
+    public Fighter getFighter() {
+        return fighter;
+    }
 }
