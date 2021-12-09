@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Player extends Fighter {
     private final Scanner scanner;
+    private int hpBottle = 3;
 
     public Player(String name, Scanner scanner) {
         super(name);
@@ -17,6 +18,15 @@ public class Player extends Fighter {
 
     @Override
     public Action doAction(List<Fighter> fighters) {
+        if (hpBottle > 0) {
+            System.out.println("You have " + hpBottle + " hp bottle(s)");
+            String input = InputUtil.getInputString(scanner, "Do you want to use one? (y/n)");
+            if (input.equalsIgnoreCase("y")) {
+                hpBottle--;
+                return () -> this.heal(2);
+            }
+        }
+
         List<Fighter> enemies = getEnemies(fighters);
         System.out.println("Enemies: ");
         for (int i = 0; i < enemies.size(); i++) {

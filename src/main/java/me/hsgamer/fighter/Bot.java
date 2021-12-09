@@ -22,7 +22,10 @@ public class Bot extends Fighter {
 
         Fighter choose;
         if (Math.random() < 0.8) {
-            choose = getWeakest(getEnemies(fighters));
+            choose = getWeakest(fighters);
+            if (choose == this) {
+                return () -> this.heal(2);
+            }
         } else {
             choose = getStrongest(getEnemies(fighters));
         }
