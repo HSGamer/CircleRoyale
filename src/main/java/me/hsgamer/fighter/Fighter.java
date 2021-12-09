@@ -17,8 +17,9 @@ public abstract class Fighter {
         if (health < 0) health = 0;
     }
 
-    public void damage() {
-        damage(1);
+    public void heal(int heal) {
+        health += heal;
+        if (health > 10) health = 10;
     }
 
     public int getHealth() {
