@@ -18,11 +18,12 @@ public class Arena {
         int round = 0;
         while (!isEnded()) {
             System.out.println("Round #" + ++round);
-            for (Fighter fighter : fighters) {
-                System.out.println(fighter.getName() + ": " + (fighter.isAlive() ? fighter.displayHealth() : "dead"));
+            Collections.shuffle(fighters);
+            for (int i = 0; i < fighters.size(); i++) {
+                Fighter fighter = fighters.get(i);
+                System.out.println((i + 1) + "/ " + fighter.getName() + " " + (fighter.isAlive() ? fighter.displayHealth() : "dead"));
             }
             ThreadUtil.delay(2000);
-            Collections.shuffle(fighters);
             for (Fighter fighter : fighters) {
                 if (!fighter.isAlive()) continue;
                 System.out.println("============================================");
