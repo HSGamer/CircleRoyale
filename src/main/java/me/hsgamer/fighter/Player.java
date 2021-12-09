@@ -3,14 +3,14 @@ package me.hsgamer.fighter;
 import me.hsgamer.InputUtil;
 import me.hsgamer.action.Action;
 import me.hsgamer.action.Fight;
-import me.hsgamer.action.Heal;
+import me.hsgamer.action.HealPool;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Player extends Fighter {
     private final Scanner scanner;
-    private int hpBottle = 3;
+    private final HealPool healPool = new HealPool(this);
 
     public Player(String name, Scanner scanner) {
         super(name);
@@ -19,12 +19,11 @@ public class Player extends Fighter {
 
     @Override
     public Action doAction(List<Fighter> fighters) {
-        if (hpBottle > 0) {
-            System.out.println("You have " + hpBottle + " hp bottle(s)");
+        if (healPool.isAvailable()) {
+            System.out.println("You have " + healPool.getHpBottles() + " hp bottle(s)");
             String input = InputUtil.getInputString(scanner, "Do you want to use one? (y/n)");
             if (input.equalsIgnoreCase("y")) {
-                hpBottle--;
-                return new Heal(this);
+                return healPool;
             }
         }
 

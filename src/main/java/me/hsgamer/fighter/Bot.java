@@ -2,14 +2,14 @@ package me.hsgamer.fighter;
 
 import me.hsgamer.action.Action;
 import me.hsgamer.action.Fight;
-import me.hsgamer.action.Heal;
+import me.hsgamer.action.HealPool;
 
 import java.util.List;
 import java.util.Random;
 
 public class Bot extends Fighter {
     private final Random random = new Random();
-    private int hpBottles = 3;
+    private final HealPool healPool = new HealPool(this);
 
     public Bot(String name) {
         super(name);
@@ -24,9 +24,8 @@ public class Bot extends Fighter {
             e.printStackTrace();
         }
 
-        if (hpBottles > 0 && getHealth() < 5 && Math.random() < 0.5) {
-            hpBottles--;
-            return new Heal(this);
+        if (healPool.isAvailable() && getHealth() < 5 && Math.random() < 0.5) {
+            return healPool;
         }
 
         List<Fighter> enemies = getEnemies(fighters);
