@@ -1,5 +1,6 @@
 package me.hsgamer.fighter;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Bot extends Fighter {
@@ -24,22 +25,10 @@ public class Bot extends Fighter {
     }
 
     private Fighter getWeakest(List<Fighter> enemies) {
-        Fighter weakest = enemies.get(0);
-        for (Fighter enemy : enemies) {
-            if (enemy.getHealth() < weakest.getHealth()) {
-                weakest = enemy;
-            }
-        }
-        return weakest;
+        return enemies.stream().min(Comparator.comparingInt(Fighter::getHealth)).orElse(null);
     }
 
     private Fighter getStrongest(List<Fighter> enemies) {
-        Fighter strongest = enemies.get(0);
-        for (Fighter enemy : enemies) {
-            if (enemy.getHealth() > strongest.getHealth()) {
-                strongest = enemy;
-            }
-        }
-        return strongest;
+        return enemies.stream().max(Comparator.comparingInt(Fighter::getHealth)).orElse(null);
     }
 }
