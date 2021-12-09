@@ -26,7 +26,6 @@ public class Arena {
                 List<Fighter> enemies = getAliveFighters();
                 Action action = fighter.doAction(enemies);
                 action.execute();
-                System.out.println("============================================");
                 broadcastDead();
                 System.out.println("============================================");
             }
