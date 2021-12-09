@@ -3,6 +3,7 @@ package me.hsgamer.fighter;
 import me.hsgamer.InputUtil;
 import me.hsgamer.action.Action;
 import me.hsgamer.action.Fight;
+import me.hsgamer.action.Heal;
 
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +24,7 @@ public class Player extends Fighter {
             String input = InputUtil.getInputString(scanner, "Do you want to use one? (y/n)");
             if (input.equalsIgnoreCase("y")) {
                 hpBottle--;
-                return () -> this.heal(2);
+                return new Heal(this);
             }
         }
 

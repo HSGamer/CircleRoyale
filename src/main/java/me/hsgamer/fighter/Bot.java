@@ -2,11 +2,15 @@ package me.hsgamer.fighter;
 
 import me.hsgamer.action.Action;
 import me.hsgamer.action.Fight;
+import me.hsgamer.action.Heal;
 
-import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 public class Bot extends Fighter {
+    private final Random random = new Random();
+    private int hpBottles = 3;
+
     public Bot(String name) {
         super(name);
     }
@@ -20,24 +24,13 @@ public class Bot extends Fighter {
             e.printStackTrace();
         }
 
-        Fighter choose;
-        if (Math.random() < 0.8) {
-            choose = getWeakest(fighters);
-            if (choose == this) {
-                return () -> this.heal(2);
-            }
-        } else {
-            choose = getStrongest(getEnemies(fighters));
+        if (hpBottles > 0 && getHealth() < 5 && Math.random() < 0.5) {
+            hpBottles--;
+            return new Heal(this);
         }
 
-        return new Fight(this, choose);
-    }
-
-    private Fighter getWeakest(List<Fighter> enemies) {
-        return enemies.stream().min(Comparator.comparingInt(Fighter::getHealth)).orElse(null);
-    }
-
-    private Fighter getStrongest(List<Fighter> enemies) {
-        return enemies.stream().max(Comparator.comparingInt(Fighter::getHealth)).orElse(null);
+        List<Fighter> enemies = getEnemies(fighters);
+        int choose = random.nextInt(enemies.size());
+        return new Fight(this, enemies.get(choose));
     }
 }
