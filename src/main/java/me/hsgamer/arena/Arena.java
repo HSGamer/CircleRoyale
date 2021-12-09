@@ -3,12 +3,11 @@ package me.hsgamer.arena;
 import me.hsgamer.action.Action;
 import me.hsgamer.fighter.Fighter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Arena {
     private final List<Fighter> fighters;
+    private final Set<Fighter> deadFighters = new HashSet<>();
 
     public Arena(List<Fighter> fighters) {
         this.fighters = fighters;
@@ -28,11 +27,22 @@ public class Arena {
                 Action action = fighter.doAction(enemies);
                 action.execute();
                 System.out.println("============================================");
+                broadcastDead();
+                System.out.println("============================================");
             }
         }
     }
 
-    protected final List<Fighter> getAliveFighters() {
+    private void broadcastDead() {
+        List<Fighter> alive = getAliveFighters();
+        for (Fighter fighter : fighters) {
+            if (!alive.contains(fighter) && deadFighters.add(fighter)) {
+                System.out.println(fighter.getName() + " is dead");
+            }
+        }
+    }
+
+    private List<Fighter> getAliveFighters() {
         List<Fighter> enemies = new ArrayList<>(fighters);
         enemies.removeIf(enemy -> !enemy.isAlive());
         return enemies;

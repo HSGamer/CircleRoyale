@@ -29,7 +29,8 @@ public class Fight implements Action {
                     System.out.println("MISS");
                 } else {
                     System.out.println("BLOCKED");
-                    target.damage(damage /= 2);
+                    damage /= 2;
+                    target.damage(damage);
                 }
             } else {
                 System.out.println("HIT");
@@ -37,6 +38,6 @@ public class Fight implements Action {
             }
         }
         System.out.println(target.getName() + " took " + damage + " damage");
-        System.out.println("Current health: " + target.displayHealth());
+        System.out.println(target.getName() + " has " + target.displayHealth() + " health left");
     }
 }
