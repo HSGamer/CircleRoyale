@@ -36,7 +36,7 @@ public abstract class Fighter {
     }
 
     public String displayHealth() {
-        return health + " " + "♥".repeat(Math.max(0, health));
+        return health + (health > 0 ? " " + "♥".repeat(health) : "");
     }
 
     public boolean isAlive() {
