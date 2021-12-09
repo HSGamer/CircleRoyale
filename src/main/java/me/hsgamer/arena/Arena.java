@@ -43,7 +43,7 @@ public class Arena {
 
     private List<Fighter> getAliveFighters() {
         List<Fighter> enemies = new ArrayList<>(fighters);
-        enemies.removeIf(enemy -> !enemy.isAlive());
+        enemies.removeIf(Fighter::isDead);
         return enemies;
     }
 
