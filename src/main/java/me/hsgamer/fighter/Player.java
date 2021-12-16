@@ -9,12 +9,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player extends Fighter {
-    private final Scanner scanner;
+    private final Scanner scanner = new Scanner(System.in);
     private final HealPool healPool = new HealPool(this);
 
-    public Player(String name, Scanner scanner) {
+    public Player(String name) {
         super(name);
-        this.scanner = scanner;
     }
 
     @Override

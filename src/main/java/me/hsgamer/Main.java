@@ -1,9 +1,7 @@
 package me.hsgamer;
 
 import me.hsgamer.arena.Arena;
-import me.hsgamer.fighter.Bot;
 import me.hsgamer.fighter.Fighter;
-import me.hsgamer.fighter.Player;
 import me.hsgamer.utils.InputUtil;
 
 import java.util.ArrayList;
@@ -14,16 +12,27 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int players = InputUtil.getInputInteger(scanner, "How many players? ", 0, 10);
-        int bots = InputUtil.getInputInteger(scanner, "How many bots? ", 0, 10);
         List<Fighter> fighters = new ArrayList<>();
-        for (int i = 0; i < players; i++) {
-            String name = InputUtil.getInputString(scanner, "Player " + (i + 1) + " name: ");
-            fighters.add(new Player(name, scanner));
-        }
-        for (int i = 0; i < bots; i++) {
-            String name = InputUtil.getInputString(scanner, "Bot " + (i + 1) + " name: ");
-            fighters.add(new Bot(name));
+
+        int fighterCount = InputUtil.getInputInteger(scanner, "How many fighters do you want to play with? ", 0, 10);
+        for (int i = 0; i < fighterCount; i++) {
+            // Get the name of the fighter
+            String name = InputUtil.getInputString(scanner, "Name for fighter " + (i + 1) + ": ");
+
+            // Print the available fighters
+            System.out.println("Available Fighters:");
+            FighterType[] fighterTypes = FighterType.values();
+            for (int j = 0; j < fighterTypes.length; j++) {
+                System.out.println((j + 1) + ": " + fighterTypes[j].name());
+            }
+
+            // Choose the fighter type
+            int fighterType = InputUtil.getInputInteger(scanner, "Fighter type for " + name + ": ", 1, fighterTypes.length);
+            FighterType type = fighterTypes[fighterType - 1];
+            Fighter fighter = type.getFighter(name);
+
+            // Add the fighter to the list
+            fighters.add(fighter);
         }
 
         Arena arena = new Arena(fighters);
