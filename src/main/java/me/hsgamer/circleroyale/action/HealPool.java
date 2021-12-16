@@ -1,6 +1,6 @@
-package me.hsgamer.action;
+package me.hsgamer.circleroyale.action;
 
-import me.hsgamer.fighter.Fighter;
+import me.hsgamer.circleroyale.fighter.Fighter;
 
 public class HealPool extends Heal {
     private int hpBottles = 3;

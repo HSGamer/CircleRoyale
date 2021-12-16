@@ -1,6 +1,6 @@
-package me.hsgamer.fighter;
+package me.hsgamer.circleroyale.fighter;
 
-import me.hsgamer.action.Action;
+import me.hsgamer.circleroyale.action.Action;
 
 import java.util.ArrayList;
 import java.util.List;

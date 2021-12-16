@@ -1,8 +1,8 @@
-package me.hsgamer;
+package me.hsgamer.circleroyale;
 
-import me.hsgamer.arena.Arena;
-import me.hsgamer.fighter.Fighter;
-import me.hsgamer.utils.InputUtil;
+import me.hsgamer.circleroyale.arena.Arena;
+import me.hsgamer.circleroyale.fighter.Fighter;
+import me.hsgamer.circleroyale.utils.InputUtil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package me.hsgamer.utils;
+package me.hsgamer.circleroyale.utils;
 
 import java.util.Scanner;
 

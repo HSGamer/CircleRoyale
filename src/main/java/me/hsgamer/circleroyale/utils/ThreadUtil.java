@@ -1,4 +1,4 @@
-package me.hsgamer.utils;
+package me.hsgamer.circleroyale.utils;
 
 public class ThreadUtil {
     private ThreadUtil() {

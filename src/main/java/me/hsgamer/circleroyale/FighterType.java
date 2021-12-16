@@ -1,9 +1,9 @@
-package me.hsgamer;
+package me.hsgamer.circleroyale;
 
-import me.hsgamer.fighter.Bot;
-import me.hsgamer.fighter.Fighter;
-import me.hsgamer.fighter.Player;
-import me.hsgamer.fighter.Weak;
+import me.hsgamer.circleroyale.fighter.Bot;
+import me.hsgamer.circleroyale.fighter.Fighter;
+import me.hsgamer.circleroyale.fighter.Player;
+import me.hsgamer.circleroyale.fighter.Weak;
 
 import java.util.function.Function;
 

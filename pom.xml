@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>me.hsgamer.Main</mainClass>
+                            <mainClass>me.hsgamer.circleroyale.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

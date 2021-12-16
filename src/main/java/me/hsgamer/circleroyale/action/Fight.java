@@ -1,6 +1,6 @@
-package me.hsgamer.action;
+package me.hsgamer.circleroyale.action;
 
-import me.hsgamer.fighter.Fighter;
+import me.hsgamer.circleroyale.fighter.Fighter;
 
 import java.util.Random;
 

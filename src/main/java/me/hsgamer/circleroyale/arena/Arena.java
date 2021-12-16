@@ -1,8 +1,8 @@
-package me.hsgamer.arena;
+package me.hsgamer.circleroyale.arena;
 
-import me.hsgamer.action.Action;
-import me.hsgamer.fighter.Fighter;
-import me.hsgamer.utils.ThreadUtil;
+import me.hsgamer.circleroyale.action.Action;
+import me.hsgamer.circleroyale.fighter.Fighter;
+import me.hsgamer.circleroyale.utils.ThreadUtil;
 
 import java.util.*;
 

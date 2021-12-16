@@ -1,9 +1,9 @@
-package me.hsgamer.fighter;
+package me.hsgamer.circleroyale.fighter;
 
-import me.hsgamer.action.Action;
-import me.hsgamer.action.Fight;
-import me.hsgamer.action.HealPool;
-import me.hsgamer.utils.ThreadUtil;
+import me.hsgamer.circleroyale.action.Action;
+import me.hsgamer.circleroyale.action.Fight;
+import me.hsgamer.circleroyale.action.HealPool;
+import me.hsgamer.circleroyale.utils.ThreadUtil;
 
 import java.util.Comparator;
 import java.util.List;
